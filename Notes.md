@@ -2,7 +2,7 @@
 (UPDATE this EVERYTIME YOU STOP WORKING: write down what to do next)
 
 # Work log
-## Admin: Menu Management
+### Admin: Menu Management
 - CHANGE MENU TO PQ(instead of ArrayList)
 - Implement other 4 menu management functionalities
 
