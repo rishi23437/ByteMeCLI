@@ -7,14 +7,14 @@
 - Implement other 4 menu management functionalities
 
 # Users
-## Users.Customer(Students)
+## Customer(Students)
 - Browse canteen menu
 - place orders
 - track delivery
 (Maintain order histories)
 
 
-## Users.Admin(Canteen staff)
+## Admin(Canteen staff)
 - Manage menu(update, delete, etc items from the menu)
 - Process orders efficiently
 - Daily Sales Report
