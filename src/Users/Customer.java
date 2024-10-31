@@ -1,7 +1,12 @@
 package Users;
 
+import java.util.Stack;
+
 public class Customer extends User {
     private Boolean vip = false;
+
+    // LIFO, therefore sorted based on jo order last khatam hua
+    private Stack<Order> order_history = new Stack<Order>();
 
     public Customer() {
         this.password = null;
@@ -25,7 +30,7 @@ public class Customer extends User {
         System.out.println("-----------------------MENU---------------------:");
         for (FoodItem item: FoodItem.menu) {
             System.out.println(item);
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
@@ -45,5 +50,9 @@ public class Customer extends User {
 
     public void setVip(Boolean vip) {
         this.vip = vip;
+    }
+
+    public Stack<Order> getOrder_history() {
+        return order_history;
     }
 }

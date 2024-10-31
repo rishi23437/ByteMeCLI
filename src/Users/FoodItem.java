@@ -12,7 +12,7 @@ public class FoodItem {
     private final String category;        // similar to 'domain' for Prof in Course Reg System
     private int price;                    // Taking prices of items to be integers
     private boolean available;
-    private String special_request = null;
+    private String special_request = "";
 
 
     // Sort by price using self-defined function
@@ -38,7 +38,8 @@ public class FoodItem {
     // DEFINE TO STRING METHOD FOR PRINTING MENU
     @Override
     public String toString() {
-        return "Name: " + name + "\nCategory: " + category + "\nPrice: " + price + "\nAvailable: " + available;
+        return "Name: " + name + "\nCategory: " + category + "\nPrice: " + price +
+                "\nAvailable: " + available + "\nSpecial Request: " + special_request;
     }
 
     public String getName() { return name; }

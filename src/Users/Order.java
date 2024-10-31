@@ -12,6 +12,7 @@ public class Order {
     protected enum Status {PENDING, COMPLETED, CANCELLED, DENIED};
     private Status status;
 
+    // contains only current pending orders
     protected static PriorityQueue<Order> orders = new PriorityQueue<>(new CustomerPQComparator());
 
     public Order(ArrayList<FoodItem> items, Customer customer) {
@@ -20,6 +21,16 @@ public class Order {
         this.status = Status.PENDING;
         this.arrival_time = Instant.now();
     }
+
+
+    public void print_info() {
+        System.out.println("Customer: " + customer.getName());
+        for (FoodItem item : this.items) {
+            System.out.println(item);
+        }
+        System.out.println("Status: " + this.status);
+    }
+
 
     public Status getStatus() {
         return status;

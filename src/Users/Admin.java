@@ -26,6 +26,8 @@ public class Admin extends User {
         System.out.println("1: Add Food Item");
         System.out.println("2: Update Food Item");
         System.out.println("3: Remove Food Item");
+        System.out.println("4: View Pending orders");
+        System.out.println("5: Process Orders");
     }
 
 
@@ -129,9 +131,9 @@ public class Admin extends User {
                 }
                 price = scan.nextInt();
                 scan.nextLine();
-                required_item.setPrice(price);
-                System.out.println("Price updated successfully.");
             }
+            required_item.setPrice(price);
+            System.out.println("Price updated successfully.");
         }
         if (!done) {
             System.out.println("Invalid choice. Please try again.");
@@ -170,7 +172,88 @@ public class Admin extends User {
         System.out.println("Item with the given name not found. Please try again.");
     }
 
-    
+    // ORDER MANAGEMENT
+    // 4. View pending orders
+    public void view_orders() {
+        // ASSUMING orders ONLY HAS PENDING ORDERS
+        System.out.println("-------------------------ORDERS-------------------------");
+        Iterator<Order> it = Order.orders.iterator();
+        int index = 1;
+        while (it.hasNext()) {
+            Order order = it.next();
+            System.out.println("Order " + index + ":");
+            order.print_info();
+            System.out.println();
+        }
+    }
+
+    // Update order status. Status will be updated(order will be processed) only by Admin(process_orders()), except when customer cancels order.
+    public boolean update_order_status(Order o) {
+        Scanner scan = new Scanner(System.in);
+        o.print_info();
+        System.out.println("Enter the new status for the order:");
+        String new_status = scan.nextLine().toUpperCase();
+        if (new_status.equalsIgnoreCase(Order.Status.COMPLETED.toString())) {
+            o.setStatus(Order.Status.COMPLETED);
+            o.getCustomer().getOrder_history().push(o);
+        }
+        else if (new_status.equalsIgnoreCase(Order.Status.CANCELLED.toString())) {
+            o.setStatus(Order.Status.CANCELLED);
+            o.getCustomer().getOrder_history().push(o);
+        }
+        else if (new_status.equalsIgnoreCase(Order.Status.DENIED.toString())) {
+            o.setStatus(Order.Status.DENIED);
+            o.getCustomer().getOrder_history().push(o);
+        }
+        else {
+            System.out.println("Entered status is invalid or already set.");
+            return false;
+        }
+        System.out.println("Order status updated successfully.");
+        Order.orders.remove(o);
+        return true;
+    }
+
+    // 5. Process orders(finish them, change their status)
+    public void process_orders() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Total number of orders pending: " + Order.orders.size());
+        System.out.println("How many orders do you want to process?");
+        if (!scan.hasNextInt()) {                                   // check for int
+            scan.nextLine();
+            System.out.println("Please enter a number!");
+            return;
+        }
+        int num_of_orders = scan.nextInt();
+        scan.nextLine();
+        while (num_of_orders < 0 || num_of_orders > Order.orders.size()) {
+            System.out.println("Number of orders is either not positive or greater than the total number of orders.");
+            if (!scan.hasNextInt()) {                                   // check for int
+                scan.nextLine();
+                System.out.println("Please enter a number!");
+                continue;
+            }
+            num_of_orders = scan.nextInt();
+            scan.nextLine();
+        }
+        if (num_of_orders == 0) {
+            System.out.println("No orders processed");
+            return;
+        }
+
+        // Now number of orders is positive
+        Iterator<Order> it = Order.orders.iterator();
+        int count = 0;
+        while (count < num_of_orders) {
+            Order order = it.next();
+            boolean success = update_order_status(order);
+            if (!success) {
+                System.out.println("Some orders were not processed because of invalid status.");
+                return;
+            }
+            count++;
+        }
+    }
 
 
     public String getName() {
