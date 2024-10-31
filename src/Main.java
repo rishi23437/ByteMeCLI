@@ -49,7 +49,38 @@ public class Main {
                 System.out.println("Admin signed in Successfully.");
 
                 // ADMIN FUNCTIONALITIES
+                while (true) {
+                    admin.print_functionalities();
+                    System.out.print("Which operation would you like to do?");
+                    if (!sc.hasNextInt()) {                                   // check for int
+                        sc.nextLine();
+                        System.out.println("Please enter a number!");
+                        continue;
+                    }
+                    int op = sc.nextInt();
+                    sc.nextLine();
 
+                    // Operations
+                    if (op == 0) {                                  // No operation, quit
+                        System.out.println();
+                        break;
+                    }
+                    else if (op == 1) {
+                        admin.add_item();
+                        System.out.println();
+                    }
+                    else if (op == 2) {
+                        admin.update_item();
+                        System.out.println();
+                    }
+                    else if (op == 3) {
+                        admin.remove_item();
+                        System.out.println();
+                    }
+                    else {
+                        System.out.println("Enter a valid choice.");
+                    }
+                }
             }
             else if (role == 2) {
                 // Customer
@@ -99,7 +130,27 @@ public class Main {
                 }
 
                 // CUSTOMER FUNCTIONALITIES
+                while (true) {
+                    customer.print_functionalities();
+                    System.out.print("Which operation would you like to do?");
+                    if (!sc.hasNextInt()) {                                   // check for int
+                        sc.nextLine();
+                        System.out.println("Please enter a number!");
+                        continue;
+                    }
+                    int op = sc.nextInt();
+                    sc.nextLine();
 
+                    // Operations
+                    if (op == 0) {                                  // No operation, quit
+                        System.out.println();
+                        break;
+                    }
+                    else if (op == 1) {
+                        customer.print_menu();
+                        System.out.println();
+                    }
+                }
             }
             else {
                 // Neither admin nor customer
