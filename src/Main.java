@@ -77,6 +77,15 @@ public class Main {
                         admin.remove_item();
                         System.out.println();
                     }
+                    else if (op == 4) {
+                        admin.view_orders();
+                        System.out.println();
+                    }
+                    else if (op == 5) {
+                        admin.process_orders();
+                        System.out.println();
+                    }
+
                     else {
                         System.out.println("Enter a valid choice.");
                     }
