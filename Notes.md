@@ -9,7 +9,7 @@
 
 
 ### Customer Fucntionalities
-
+- Cart operations: DONE
 
 # Thinking
 How:
