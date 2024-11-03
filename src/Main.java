@@ -156,8 +156,28 @@ public class Main {
                         break;
                     }
                     else if (op == 1) {
+                        customer.become_vip();
+                        System.out.println();
+                    }
+                    else if (op == 2) {
                         customer.print_menu();
                         System.out.println();
+                    }
+                    else if (op == 3) {
+                        customer.search();
+                        System.out.println();
+                    }
+                    else if (op == 4) {
+                        customer.filter();
+                        System.out.println();
+                    }
+                    else if (op == 5) {
+                        customer.sort_menu();
+                        System.out.println();
+                    }
+
+                    else {
+                        System.out.println("Enter a valid choice.");
                     }
                 }
             }
