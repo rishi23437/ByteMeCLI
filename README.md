@@ -4,7 +4,7 @@ Byte Me! is a CLI-based Food Ordering System, which manages and facilitates Cust
 ## Assumptions
 ### Food Items
 - Prices of food items are taken to be integers(not floating point numbers)
-- Name of food item cannot be changed
+- Name of food item cannot be changed, since an item is identified by its name
 - By default, an item is available
 - An item can be searched by its name, or filtered by its category.
 

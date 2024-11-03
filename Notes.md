@@ -7,12 +7,23 @@
 - Make some sort of date system(could change in any way you want) to generate daily sales report.
 
 ### Customer Fucntionalities
-- Paying to become VIP: DONE 
-- Browse Menu functionalities: DONE
+- Cart operations: DONE
+
+# Thinking
+- A cart is just an order (THINK: ITEM, QUANTITY)
+- CART: list of items; list of quantities. Length of both lists: same
+- jo change karna hai, order mein hi karna hai.
+- also change order.print_info method a bit: DONE
+
+- RIGHT NOW: To iterate through all orders in a sorted manner(Admin functionality mein), iss line ko:
+  Iterator<Order> it = Order.orders.iterator();
+  while loop ke andar daaldo. Also, update_order_status mein Order.orders.poll() kardo instead of .remove(). 
+- **CHAL GAYA YAYYYY**
+
 
 
 # Note
-- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.: DONE
+- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.       DONE
 - Wherever you can take input with Strings(maybe y/n), prefer that over integers
 - For each item, you SHOULD MAKE DIFFERENT OBJECTS:
   - Item should be identified by its name, and an object should be in the menu(special request = null)
@@ -41,6 +52,6 @@
 
 # Collections
 I have utilized various collections to implement the following:
-- Menu: I used an ArrayList.
-- List of current orders to be processed: I used a Priority Queue, with my self-defined implementation of Comparator().
-- Order History of each customer: I used a Stack.
+- `Menu`: I used an ArrayList.
+- `List of current orders` to be processed: I used a Priority Queue, with my self-defined implementation of Comparator().
+- `Order History` of each customer: I used a Stack.
