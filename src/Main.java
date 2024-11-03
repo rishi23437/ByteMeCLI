@@ -85,7 +85,18 @@ public class Main {
                         admin.process_orders();
                         System.out.println();
                     }
-
+                    else if (op == 6) {
+                        admin.process_refund();
+                        System.out.println();
+                    }
+                    else if (op == 7) {
+                        admin.next_day();
+                        System.out.println();
+                    }
+                    else if (op == 8) {
+                        admin.daily_sales_report();
+                        System.out.println();
+                    }
                     else {
                         System.out.println("Enter a valid choice.");
                     }
@@ -175,7 +186,30 @@ public class Main {
                         customer.sort_menu();
                         System.out.println();
                     }
-
+                    else if (op == 6) {
+                        if (customer.isCurrent_pending_order()) {
+                            System.out.println("You cannot place an order right now because you already have a pending order.");
+                            continue;
+                        }
+                        customer.place_order();
+                        System.out.println();
+                    }
+                    else if (op == 7) {
+                        customer.view_order_status();
+                        System.out.println();
+                    }
+                    else if (op == 8) {
+                        customer.cancel_order();
+                        System.out.println();
+                    }
+                    else if (op == 9) {
+                        customer.view_order_history();
+                        System.out.println();
+                    }
+                    else if (op == 10) {
+                        customer.reorder();
+                        System.out.println();
+                    }
                     else {
                         System.out.println("Enter a valid choice.");
                     }
