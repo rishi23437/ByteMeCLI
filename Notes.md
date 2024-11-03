@@ -2,13 +2,17 @@
 (UPDATE this EVERYTIME YOU STOP WORKING: write down what to do next)
 
 # Work log
-### Admin: Menu Management
-- Order Management - Admin
-- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY
+### Admin Functionalities
+- Order Management 
+- Make some sort of date system(could change in any way you want) to generate daily sales report.
+
+### Customer Fucntionalities
+- Paying to become VIP                                      DONE 
+- Browse Menu functionalities                               DONE
 
 
 # Note
-- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY
+- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.       DONE
 - Wherever you can take input with Strings(maybe y/n), prefer that over integers
 - For each item, you SHOULD MAKE DIFFERENT OBJECTS:
   - Item should be identified by its name, and an object should be in the menu(special request = null)
@@ -30,10 +34,13 @@
 - Process orders efficiently
 - Daily Sales Report
 
-## Collections will be used for
-- Menu: Note - You will have to sort by price. USE PQ, tab sorted honge
-- List of current orders to be processed
-- Order History of each customer
 
 ## Order
 - Uniqueness of pending orders: Customer names 
+
+
+# Collections
+I have utilized various collections to implement the following:
+- Menu: I used an ArrayList.
+- List of current orders to be processed: I used a Priority Queue, with my self-defined implementation of Comparator().
+- Order History of each customer: I used a Stack.
