@@ -7,12 +7,12 @@
 - Make some sort of date system(could change in any way you want) to generate daily sales report.
 
 ### Customer Fucntionalities
-- Paying to become VIP                                      DONE 
-- Browse Menu functionalities                               DONE
+- Paying to become VIP: DONE 
+- Browse Menu functionalities: DONE
 
 
 # Note
-- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.       DONE
+- KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.: DONE
 - Wherever you can take input with Strings(maybe y/n), prefer that over integers
 - For each item, you SHOULD MAKE DIFFERENT OBJECTS:
   - Item should be identified by its name, and an object should be in the menu(special request = null)
