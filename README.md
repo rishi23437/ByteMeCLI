@@ -10,15 +10,20 @@ Byte Me! is a CLI-based Food Ordering System, which manages and facilitates Cust
 
 ### Admin
 - Password for all admins is "a"
+- Special Requests can be added by Customers, and Admins can view them.
+- I have simulated dates via assuming that the admin can SWITCH THE DATE to the next day. This is logical because the admin(owner of canteen) should decide when to end sales for the day and wind up. When he does so, daily attributes like number of orders will be reset.
+- Therefore, generate the daily sales report before switching to the next day.
 
 ### Customer
 - I am identifying customers by their names, so the names should be unique. They should be treated as usernames.
+- Customers can view the status of refunds by tracking their order histories.
 
 ### Orders
-- 'PENDING' includes preparing, out for delivery, ie., all orders which have not been completed, cancelled or denied are pending.
+- 'PENDING' includes preparing, out for delivery, ie., all orders which have not been completed, cancelled or denied are pending. At the time of writing the code, the other types of status WERE NOT MENTIONED
 - A single customer can ONLY place a single order at a time. If an order by a customer is 'PENDING', then the customer cannot place another order.
 - Admin can ONLY update the status of PENDING orders
 - Admin can update the status of orders(process orders) ONLY in the order mentioned in the pdf(Priority to VIPs, then based on arrival time).
+- If an order has been DENIED, the customer can view its status(denied) and other details in their ORDER HISTORY.
 
 
 ## Collections

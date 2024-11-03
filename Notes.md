@@ -3,24 +3,22 @@
 
 # Work log
 ### Admin Functionalities
-- Order Management 
-- Make some sort of date system(could change in any way you want) to generate daily sales report.
+- TO DO: Sales Report generation
+  - Most popular items: implement <bought>: DONE
+  - Sort menu according to bought
+
 
 ### Customer Fucntionalities
-- Cart operations: DONE
+
 
 # Thinking
-- A cart is just an order (THINK: ITEM, QUANTITY)
-- CART: list of items; list of quantities. Length of both lists: same
-- jo change karna hai, order mein hi karna hai.
-- also change order.print_info method a bit: DONE
+How:
+- thinking about creating a variable called <bought> which tracks the number of items bought: DONE
+- change bought while adding items in orders: DONE
+- After each 'day', bought for each item on the menu is reset. Also reset total_sales, and completed_orders: DONE
+- Most popular items can be calculated by sorting the menu based on <bought>. You can print name of item.
 
-- RIGHT NOW: To iterate through all orders in a sorted manner(Admin functionality mein), iss line ko:
-  Iterator<Order> it = Order.orders.iterator();
-  while loop ke andar daaldo. Also, update_order_status mein Order.orders.poll() kardo instead of .remove(). 
-- **CHAL GAYA YAYYYY**
-
-
+- change total sales while initiating an order(placing it), cancelling it, and DENYING it: DONE
 
 # Note
 - KUCH AISA KARO, JIS SE ORDERS SHOULD ONLY CONTAIN PENDING ORDERS. After completing, cancelling, or denying an order, the order should be REMOVED FROM orders, and ADDED TO CUSTOMER HISTORY.       DONE
