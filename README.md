@@ -23,6 +23,6 @@ Byte Me! is a CLI-based Food Ordering System, which manages and facilitates Cust
 
 ## Collections
 I have utilized various collections to implement the following:
-- Menu: I used an ArrayList.
+- 'Menu': I used an ArrayList.
 - List of current orders to be processed: I used a Priority Queue, with my self-defined implementation of Comparator().
 - Order History of each customer: I used a Stack.
