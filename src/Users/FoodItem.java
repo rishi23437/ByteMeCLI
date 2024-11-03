@@ -13,7 +13,7 @@ public class FoodItem {
     private int price;                    // Taking prices of items to be integers
     private boolean available;
     private String special_request = "";
-
+    protected int bought = 0;
 
     // Sort by price using self-defined function
     protected static ArrayList<FoodItem> menu = new ArrayList<>();
@@ -53,4 +53,6 @@ public class FoodItem {
     public void setAvailable(boolean available) { this.available = available; }
 
     public String getCategory() { return category; }
+
+    public void setBought(int bought) { this.bought = bought; }
 }

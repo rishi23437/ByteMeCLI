@@ -28,6 +28,9 @@ public class Admin extends User {
         System.out.println("3: Remove Food Item");
         System.out.println("4: View Pending orders");
         System.out.println("5: Process Orders");
+        System.out.println("6: Process Refund for Cancelled Orders");
+        System.out.println("7: End sales for the day");
+        System.out.println("8: View the Daily Sales Report");
     }
 
 
@@ -158,7 +161,7 @@ public class Admin extends User {
                 while (it.hasNext()) {
                     Order order = it.next();
                     for (FoodItem food: order.getItems()) {
-                        if (food.getName().equals(item.getName()) && order.getStatus().equals(Order.Status.PENDING)) {
+                        if (food.getName().equals(item.getName())) {
                             order.setStatus(Order.Status.DENIED);
                         }
                     }
@@ -181,9 +184,10 @@ public class Admin extends User {
         int index = 1;
         while (it.hasNext()) {
             Order order = it.next();
-            System.out.println("Order " + index + ":");
+            System.out.println("Order " + index + ": ---------------------------------\n");
             order.print_info();
             System.out.println();
+            index++;
         }
     }
 
@@ -210,7 +214,8 @@ public class Admin extends User {
             return false;
         }
         System.out.println("Order status updated successfully.");
-        Order.orders.remove(o);
+        o.getCustomer().setCurrent_pending_order(false);                        // order not pending now
+        Order.orders.poll();
         return true;
     }
 
@@ -242,9 +247,9 @@ public class Admin extends User {
         }
 
         // Now number of orders is positive
-        Iterator<Order> it = Order.orders.iterator();
         int count = 0;
         while (count < num_of_orders) {
+            Iterator<Order> it = Order.orders.iterator();
             Order order = it.next();
             boolean success = update_order_status(order);
             if (!success) {
@@ -252,6 +257,71 @@ public class Admin extends User {
                 return;
             }
             count++;
+        }
+    }
+
+    // 6. Process refunds of cancelled orders
+    public void process_refund() {
+        Scanner scan = new Scanner(System.in);
+        if (Order.cancelled_or_denied_orders.isEmpty()) {
+            System.out.println("There are no cancelled or denied orders");
+            return;
+        }
+
+        System.out.println("The following are the cancelled/denied orders, whose refunds have not been processed:");
+        Iterator<Order> it = Order.cancelled_or_denied_orders.iterator();
+        int index = 1;
+        while (it.hasNext()) {
+            Order order = it.next();
+            System.out.println("Order " + index + ": -----------------------------\n");
+            order.print_info();
+            index++;
+        }
+
+        System.out.println("Enter the index of the order for which you want to process the refund: ");
+        if (!scan.hasNextInt()) {                                   // check for int
+            scan.nextLine();
+            System.out.println("Please enter a number!");
+            return;
+        }
+        int order_num = scan.nextInt();
+        scan.nextLine();
+        while (order_num < 1 || order_num > Order.cancelled_or_denied_orders.size()) {
+            System.out.println("Number of orders is either not positive or greater than the total number of orders.");
+            if (!scan.hasNextInt()) {                                   // check for int
+                scan.nextLine();
+                System.out.println("Please enter a number!");
+                continue;
+            }
+            order_num = scan.nextInt();
+            scan.nextLine();
+        }
+
+        Order.cancelled_or_denied_orders.get(order_num - 1).setRefund(true);
+        Order.cancelled_or_denied_orders.remove(order_num - 1);
+        System.out.println("Refund successful!");
+    }
+
+    // 7. End sales for the day
+    public void next_day() {
+        // Current day over, switch to next day. GENERATE DAILY REPORT BEFORE THIS
+        Order.total_sales = 0;
+        Order.completed_orders = 0;
+        for (FoodItem item: FoodItem.menu) {
+            item.setBought(0);
+        }
+        System.out.println("Current day is over. Please come back tomorrow!");
+    }
+
+    // 8. Generate Daily Sales Report
+    public void daily_sales_report() {
+        System.out.println("Total number of Completed Orders for the day: " + Order.completed_orders);
+        System.out.println("Total sales for the day: " + Order.total_sales);
+
+        // To get most popular items
+        FoodItem.menu.sort(new MenuBoughtComparator());
+        for (FoodItem item: FoodItem.menu) {
+            System.out.println(item.getName() + " was bought " + item.bought + " number of times.");
         }
     }
 
