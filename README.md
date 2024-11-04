@@ -17,6 +17,7 @@ Byte Me! is a CLI-based Food Ordering System, which manages and facilitates Cust
 ### Customer
 - I am identifying customers by their names, so the names should be unique. They should be treated as usernames.
 - Customers can view the status of refunds by tracking their order histories.
+- Customers can search items by name.
 
 ### Orders
 - 'PENDING' includes preparing, out for delivery, ie., all orders which have not been completed, cancelled or denied are pending. At the time of writing the code, the other types of status WERE NOT MENTIONED
