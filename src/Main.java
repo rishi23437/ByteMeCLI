@@ -20,9 +20,27 @@ public class Main {
         */
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("\n" +
+                " _______             __                     __       __          __ \n" +
+                "/       \\           /  |                   /  \\     /  |        /  |\n" +
+                "$$$$$$$  |__    __ _$$ |_    ______        $$  \\   /$$ | ______ $$ |\n" +
+                "$$ |__$$ /  |  /  / $$   |  /      \\       $$$  \\ /$$$ |/      \\$$ |\n" +
+                "$$    $$<$$ |  $$ $$$$$$/  /$$$$$$  |      $$$$  /$$$$ /$$$$$$  $$ |\n" +
+                "$$$$$$$  $$ |  $$ | $$ | __$$    $$ |      $$ $$ $$/$$ $$    $$ $$/ \n" +
+                "$$ |__$$ $$ \\__$$ | $$ |/  $$$$$$$$/       $$ |$$$/ $$ $$$$$$$$/ __ \n" +
+                "$$    $$/$$    $$ | $$  $$/$$       |      $$ | $/  $$ $$       /  |\n" +
+                "$$$$$$$/  $$$$$$$ |  $$$$/  $$$$$$$/       $$/      $$/ $$$$$$$/$$/ \n" +
+                "         /  \\__$$ |                                                 \n" +
+                "         $$    $$/                                                  \n" +
+                "          $$$$$$/                                                   ");
+        System.out.println("Welcome to our online Food Ordering Application!");
+
         boolean flag = true;
         while (flag) {
-            System.out.println("Enter your role(1 for Admin, 2 for Customer, 0 to quit): ");
+            System.out.println("Enter your role: ");
+            System.out.println("0: Quit");
+            System.out.println("1: Admin");
+            System.out.println("2: Customer");
             if (!sc.hasNextInt()) {
                 sc.nextLine();
                 System.out.println("Please enter a number!");
