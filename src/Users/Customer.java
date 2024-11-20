@@ -329,6 +329,7 @@ public class Customer extends User {
             System.out.println("Order " + order_num + ": ----------------------------------");
             o.print_info();
             order_num++;
+            System.out.println();
         }
         return true;
     }

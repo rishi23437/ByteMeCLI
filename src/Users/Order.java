@@ -40,6 +40,7 @@ public class Order {
             System.out.println("Quantity: " + quantities.get(i));
             System.out.println();
         }
+        System.out.println("Total Price: " + total_price);
         System.out.println("Status: " + this.status);
         if (status == Status.CANCELLED && !refund) {
             System.out.println("Refund not processed yet.");
